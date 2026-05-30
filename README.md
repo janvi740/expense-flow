@@ -48,3 +48,21 @@ cd frontend
 npm install
 npm run dev
 ```
+
+## Screenshots
+
+### Login Page
+
+![Login](screenshots/login.png)
+
+### Register Page
+
+![Register](screenshots/register.png)
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Analytics
+
+![Analytics](screenshots/chart.png)
