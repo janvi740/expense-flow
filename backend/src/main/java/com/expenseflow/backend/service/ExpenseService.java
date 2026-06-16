@@ -34,7 +34,7 @@ public interface ExpenseService {
             String email
     );
 
-    Page<Expense> getUserExpenses(
+    Page<ExpenseResponseDto> getUserExpenses(
             String email,
             int page,
             int size,

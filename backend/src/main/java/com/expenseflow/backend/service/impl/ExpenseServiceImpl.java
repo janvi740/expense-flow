@@ -52,7 +52,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public Page<Expense> getUserExpenses(
+    public Page<ExpenseResponseDto> getUserExpenses(
             String email,
             int page,
             int size,
@@ -70,22 +70,27 @@ public class ExpenseServiceImpl implements ExpenseService {
                 Sort.by(sortBy).descending()
         );
 
+        Page<Expense> expenses;
+
         if(category != null && !category.isEmpty()) {
 
             ExpenseCategory expenseCategory =
                     ExpenseCategory.valueOf(category.toUpperCase());
 
-            return expenseRepository.findByUserAndCategory(
+            expenses = expenseRepository.findByUserAndCategory(
                     user,
                     expenseCategory,
                     pageable
             );
+        } else {
+
+            expenses = expenseRepository.findByUser(
+                    user,
+                    pageable
+            );
         }
 
-        return expenseRepository.findByUser(
-                user,
-                pageable
-        );
+        return expenses.map(this::mapToDto);
     }
 
     @Override

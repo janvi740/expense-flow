@@ -36,7 +36,7 @@ public class ExpenseController {
     }
 
     @GetMapping
-    public Page<Expense> getExpenses(
+    public Page<ExpenseResponseDto> getExpenses(
 
             @RequestParam(defaultValue = "0")
             int page,
